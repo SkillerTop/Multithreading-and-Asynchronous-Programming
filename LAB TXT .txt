@@ -1,0 +1,106 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        ThreadExample1();
+        ThreadExample2();
+        ThreadExample3();
+
+        AsyncAwaitExample1();
+        AsyncAwaitExample2();
+        AsyncAwaitExample3();
+
+        Console.ReadLine();
+    }
+    static void ThreadExample1()
+    {
+        Console.WriteLine("Start execution of ThreadExample1");
+
+        Thread thread = new Thread(() =>
+        {
+            Console.WriteLine("Start execution in ThreadExample1");
+            Thread.Sleep(2000);
+            Console.WriteLine("Completion of execution in ThreadExample1");
+        });
+
+        thread.Start();
+
+        Console.WriteLine("Completion of ThreadExample1");
+    }
+    static void ThreadExample2()
+    {
+        Console.WriteLine("Start execution of ThreadExample2");
+
+        Thread thread = new Thread(() =>
+        {
+            Console.WriteLine("Start execution in ThreadExample2");
+            Thread.Sleep(1000);
+            Console.WriteLine("Completion of execution in ThreadExample2");
+        });
+
+        thread.Start();
+
+        Console.WriteLine("Completion of ThreadExample2");
+    }
+
+    static void ThreadExample3()
+    {
+        Console.WriteLine("Start execution of ThreadExample3");
+
+        Thread thread = new Thread(() =>
+        {
+            Console.WriteLine("Start execution in ThreadExample3");
+            Thread.Sleep(1500);
+            Console.WriteLine("Completion of execution in ThreadExample3");
+        });
+
+        thread.Start();
+
+        Console.WriteLine("Completion of ThreadExample3");
+    }
+
+    static async void AsyncAwaitExample1()
+    {
+        Console.WriteLine("Start execution of AsyncAwaitExample1");
+
+        await Task.Run(async () =>
+        {
+            Console.WriteLine("Start execution in AsyncAwaitExample1");
+            await Task.Delay(3000);
+            Console.WriteLine("Completion of execution in AsyncAwaitExample1");
+        });
+
+        Console.WriteLine("Completion of AsyncAwaitExample1");
+    }
+
+    static async void AsyncAwaitExample2()
+    {
+        Console.WriteLine("Start execution of AsyncAwaitExample2");
+
+        await Task.Run(async () =>
+        {
+            Console.WriteLine("Start execution in AsyncAwaitExample2");
+            await Task.Delay(1000);
+            Console.WriteLine("Completion of execution in AsyncAwaitExample2");
+        });
+
+        Console.WriteLine("Completion of AsyncAwaitExample2");
+    }
+    static async void AsyncAwaitExample3()
+    {
+        Console.WriteLine("Start execution of AsyncAwaitExample3");
+
+        await Task.Run(async () =>
+        {
+            Console.WriteLine("Start execution in AsyncAwaitExample3");
+            await Task.Delay(2500);
+            Console.WriteLine("Completion of execution in AsyncAwaitExample3");
+        });
+
+        Console.WriteLine("Completion of AsyncAwaitExample3");
+    }
+}
